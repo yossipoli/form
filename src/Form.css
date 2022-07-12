@@ -1,0 +1,17 @@
+.row{
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.col{
+    display: block;
+}
+
+.hidden{
+    display: none;
+}
+
+.invalid{
+    color: red;
+}
