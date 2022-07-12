@@ -1,16 +1,14 @@
-
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 // import ToggleButton from "react-bootstrap/ToggleButton";
 // import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import '@fortawesome/free-solid-svg-icons'
 import "./Form.css";
 import { useState } from "react";
 import Input from "./Input";
-
 
 function StudentForm() {
   const [form, setForm] = useState({
@@ -18,7 +16,7 @@ function StudentForm() {
       id: 1,
       name: "username",
       label: "Username",
-      placeholder: "Please enter your username" ,
+      placeholder: "Please enter your username",
       value: "",
       type: "text",
       validations: {
@@ -31,7 +29,7 @@ function StudentForm() {
       id: 2,
       name: "email",
       label: "Email",
-      placeholder: "Please enter your email" ,
+      placeholder: "Please enter your email",
       value: "",
       type: "email",
       validations: {
@@ -44,7 +42,7 @@ function StudentForm() {
       id: 3,
       name: "address",
       label: "Address",
-      placeholder: "Please enter your address" ,
+      placeholder: "Please enter your address",
       value: "",
       type: "text",
       validations: {
@@ -60,7 +58,7 @@ function StudentForm() {
     //   placeholder: "Please Choose course" ,
     //   value: "",
     //   type: "select",
-    //   options: ["HTML", "CSS" , "Java Script"], 
+    //   options: ["HTML", "CSS" , "Java Script"],
     //   validations: {
     //     required: true,
     //   },
@@ -110,7 +108,6 @@ function StudentForm() {
         default:
       }
     }
-    console.log(form)
     setForm({ ...form });
   };
 
@@ -126,14 +123,14 @@ function StudentForm() {
   const submitted = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      alert(
-        `
+      alert(`
         Username: ${form.username.value}
         Email: ${form.email.value}
         Address: ${form.address.value}
-        Course: ${form.course.value}
-        Gender: ${form.gender.value}
-      `
+        `
+        // Course: ${form.course.value}
+        // Gender: ${form.gender.value}
+        //`
       );
     }
   };
@@ -152,18 +149,17 @@ function StudentForm() {
       <hr />
       <div className="mb-0">
         <Form>
-
-          {Object.keys(form).map(input=> <Input
-          //first, NOT the inside input props 
-            key = {form[input].id} 
-            onBlur = {validate}
-            errors = {form[input].errors}
-          // inside the input props:
-            {...form[input]}
-            // counter = {counter}
-            />)}
-
-
+          {Object.keys(form).map((input) => (
+            <Input
+              //first, NOT the inside input props
+              key={form[input].id}
+              onBlur={validate}
+              errors={form[input].errors}
+              // inside the input props:
+              {...form[input]}
+              // counter = {counter}
+            />
+          ))}
 
           {/* <Form.Group className="mb-3" controlId="formBasicEmail">
             <div className="row">
