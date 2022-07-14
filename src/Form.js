@@ -85,17 +85,17 @@ function StudentForm({
     //   },
     //   errors: [],
     // },
-    // married: {
-    //   id: 6,
-    //   name: "married",
-    //   label: "Married",
-    //   value: married,
-    //   type: "checkbox",
-    //   validations: {
-    //     required: false,
-    //   },
-    //   errors: [],
-    // },
+    married: {
+      id: 6,
+      name: "married",
+      label: "Married",
+      value: married,
+      type: "checkbox",
+      validations: {
+        required: false,
+      },
+      errors: [],
+    },
   });
 
   const validate = ({ target: { name, value } }) => {
