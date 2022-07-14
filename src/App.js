@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 import "./App.css";
-import StudentForm from "./Form";
-import CardComponent from "./Card";
-import List from "./List";
+import StudentForm from "./Components/Form";
+import CardComponent from "./Components/Card";
+import List from "./Components/List";
 import Students from "./DAL/api";
 import { useState } from "react";
 

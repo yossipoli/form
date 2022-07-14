@@ -4,8 +4,9 @@ import Button from "react-bootstrap/Button";
 // import ButtonGroup from "react-bootstrap/ButtonGroup";
 import "./Form.css";
 import { useState } from "react";
-import Input from "./Input";
-import Students from "./DAL/api";
+import Input from "../Input";
+import Students from "../DAL/api";
+import { validate } from "../Common/validations";
 
 function StudentForm({
   renderList,
@@ -85,55 +86,30 @@ function StudentForm({
     //   },
     //   errors: [],
     // },
-    married: {
-      id: 6,
-      name: "married",
-      label: "Married",
-      value: married,
-      type: "checkbox",
-      validations: {
-        required: false,
-      },
-      errors: [],
-    },
+    // married: {
+    //   id: 6,
+    //   name: "married",
+    //   label: "Married",
+    //   value: married,
+    //   type: "checkbox",
+    //   validations: {
+    //     required: false,
+    //   },
+    //   errors: [],
+    // },
   });
 
-  const validate = ({ target: { name, value } }) => {
+  const validateInput = ({ target: { name, value } }) => {
     form[name].value = value;
-    form[name].errors = [];
-    for (const validation in form[name].validations) {
-      switch (validation) {
-        case "required": {
-          if (!value) {
-            form[name].errors.push(`${name} is require`);
-          }
-          break;
-        }
-        case "minLength": {
-          if (!value || value.length < form[name].validations.minLength) {
-            form[name].errors.push(
-              `${name} must be at least ${form[name].validations.minLength} characters`
-            );
-          }
-          break;
-        }
+    form[name].errors = validate(name, value, form[name].validations);
 
-        case "pattern": {
-          if (!value || !value.match(form[name].validations.pattern)) {
-            form[name].errors.push(`${name} is invalid`);
-          }
-          break;
-        }
-        default:
-      }
-    }
     setForm({ ...form });
   };
 
   const validateForm = () => {
     let isValid = true;
     for (const input in form) {
-      validate({ target: { name: input, value: form[input].value } });
+      form[input].errors = validate(input, form[input].value, form[input].validations);
       if (form[input].errors.length > 0) isValid = false;
     }
     return isValid;
@@ -163,7 +139,7 @@ function StudentForm({
       <div className="mb-0">
         <Form>
           {Object.keys(form).map((input) => (
-            <Input key={form[input].id} onBlur={validate} {...form[input]} />
+            <Input key={form[input].id} onBlur={validateInput} {...form[input]} />
           ))}
 
           <Button onClick={submitted} variant={edit ? "warning" : "success"}>

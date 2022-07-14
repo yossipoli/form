@@ -1,7 +1,7 @@
 import React from 'react'
-import Text from './Components/Text'
-import Select from './Components/Select'
-import CheckBox from './Components/CheckBox'
+import Text from './Components/inputComponents/Text'
+import Select from './Components/inputComponents/Select'
+import CheckBox from './Components/inputComponents/CheckBox'
 
 function Input(props) {
   // console.log(props)
