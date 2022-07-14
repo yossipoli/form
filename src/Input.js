@@ -1,15 +1,29 @@
 import React from 'react'
 import Text from './Components/Text'
 import Select from './Components/Select'
+import CheckBox from './Components/CheckBox'
 
 function Input(props) {
   // console.log(props)
+  let InputType = Text
+  switch(props.type){
+    case "select" : {
+      InputType = Select
+      break
+    }
+    case "checkbox" : {
+      InputType = CheckBox
+      break
+    }
+    default : {
+      InputType = Text
+    }
+  }
   return (
     <div>
-        {props.type === 'Select'
-        ? <Select key={props.id} {...props}/>
-        : <Text key={props.id} {...props}/>
-         }
+
+        <InputType key={props.id} {...props}/>
+
     </div>
   )
 }

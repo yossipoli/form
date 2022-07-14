@@ -1,23 +1,30 @@
 import Alert from "react-bootstrap/Alert";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-// import ToggleButton from "react-bootstrap/ToggleButton";
-// import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import '@fortawesome/free-solid-svg-icons'
+// import ButtonGroup from "react-bootstrap/ButtonGroup";
 import "./Form.css";
 import { useState } from "react";
 import Input from "./Input";
+import Students from "./DAL/api";
 
-function StudentForm() {
+function StudentForm({
+  renderList,
+  edit,
+  name = "",
+  email = "",
+  address = "",
+  course = "",
+  gender = "",
+  married = "",
+}) {
+
   const [form, setForm] = useState({
-    username: {
+    name: {
       id: 1,
-      name: "username",
-      label: "Username",
-      placeholder: "Please enter your username",
-      value: "",
+      name: "name",
+      label: "Name",
+      placeholder: "Please enter your name",
+      value: name,
       type: "text",
       validations: {
         required: true,
@@ -30,7 +37,7 @@ function StudentForm() {
       name: "email",
       label: "Email",
       placeholder: "Please enter your email",
-      value: "",
+      value: email,
       type: "email",
       validations: {
         required: true,
@@ -43,7 +50,7 @@ function StudentForm() {
       name: "address",
       label: "Address",
       placeholder: "Please enter your address",
-      value: "",
+      value: address,
       type: "text",
       validations: {
         required: true,
@@ -51,12 +58,13 @@ function StudentForm() {
       },
       errors: [],
     },
+    
     // course: {
     //   id: 4,
     //   name: "course",
     //   label: "Course",
     //   placeholder: "Please Choose course" ,
-    //   value: "",
+    //   value: course,
     //   type: "select",
     //   options: ["HTML", "CSS" , "Java Script"],
     //   validations: {
@@ -69,11 +77,22 @@ function StudentForm() {
     //   name: "gender",
     //   label: "Gender",
     //   placeholder: "Please enter your Username" ,
-    //   value: "",
-    //   type: "radio",
+    //   value: gender,
+    //   type: "select",
     //   options: [{title: "Female", value:"Female"}, {title: "Male", value:"Male"} , {title: "Other", value:"Other"}],
     //   validations: {
     //     required: true,
+    //   },
+    //   errors: [],
+    // },
+    // married: {
+    //   id: 6,
+    //   name: "married",
+    //   label: "Married",
+    //   value: married,
+    //   type: "checkbox",
+    //   validations: {
+    //     required: false,
     //   },
     //   errors: [],
     // },
@@ -120,158 +139,35 @@ function StudentForm() {
     return isValid;
   };
 
-  const submitted = (e) => {
+  const submitted = e => {
     e.preventDefault();
     if (validateForm()) {
-      alert(`
-        Username: ${form.username.value}
-        Email: ${form.email.value}
-        Address: ${form.address.value}
-        `
-        // Course: ${form.course.value}
-        // Gender: ${form.gender.value}
-        //`
-      );
+      const values = {};
+      for (const key in form){
+        values[key] = form[key].value
+      }
+      if (edit) {
+        Students.setItem(edit, values);
+      } else {
+        Students.addItem(values);
+      }
+      renderList();
     }
   };
 
-  //error messages keys
-  // const [count, setCount] = useState(100);
-  // const counter = () => {
-  //   setCount(count+1);
-  //   return count;
-  // };
-
   return (
-    <Alert variant="success">
+    <Alert variant={edit ? "warning" : "success"}>
       <Alert.Heading>Student Details</Alert.Heading>
       <p>Hello Students! Please fill in your details</p>
       <hr />
       <div className="mb-0">
         <Form>
           {Object.keys(form).map((input) => (
-            <Input
-              //first, NOT the inside input props
-              key={form[input].id}
-              onBlur={validate}
-              errors={form[input].errors}
-              // inside the input props:
-              {...form[input]}
-              // counter = {counter}
-            />
+            <Input key={form[input].id} onBlur={validate} {...form[input]} />
           ))}
 
-          {/* <Form.Group className="mb-3" controlId="formBasicEmail">
-            <div className="row">
-              <div className="col">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  defaultValue={form.username.value}
-                  type="text"
-                  name="username"
-                  placeholder="Enter Username"
-                  onBlur={validate}
-                />
-                <Form.Text className="invalid">
-                  {form.username.errors.map((error) => (
-                    <h6 key={counter()}>{error}</h6>
-                  ))}
-                </Form.Text>
-              </div>
-
-              <div className="col">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  defaultValue={form.email.value}
-                  type="email"
-                  name="email"
-                  placeholder="Enter email"
-                  onBlur={validate}
-                />
-                <Form.Text className="invalid">
-                  {form.email.errors.map((error) => (
-                    <h6 key={counter()}>{error}</h6>
-                  ))}
-                </Form.Text>
-              </div>
-            </div>
-          </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <div className="row">
-              <div className="col">
-                <Form.Label>Address</Form.Label>
-                <Form.Control
-                  name="address"
-                  defaultValue={form.address.value}
-                  type="text"
-                  placeholder="Street, number, city, zip."
-                  onBlur={validate}
-                />
-                <Form.Text className="invalid">
-                  {form.address.errors.map((error) => (
-                    <h6 key={counter()}>{error}</h6>
-                  ))}
-                </Form.Text>
-              </div>
-            </div>
-
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <div className="row">
-                <div className="col">
-                  <Form.Label>Course</Form.Label>
-                  <Form.Select name="course" onClick={validate}>
-                    <option value="">Select course</option>
-                    <option value="HTML">HTML</option>
-                    <option value="CSS">CSS</option>
-                    <option value="React">React</option>
-                  </Form.Select>
-                  <Form.Text className="invalid">
-                    {form.course.errors.map((error) => (
-                      <h6 key={counter()}>{error}</h6>
-                    ))}
-                  </Form.Text>
-                </div>
-
-                <div className="col">
-                  <ButtonGroup aria-label="Basic example">
-                    <Button
-                      name="gender"
-                      value="female"
-                      onClick={validate}
-                      variant="secondary"
-                    >
-                      Female
-                    </Button>
-                    <Button
-                      name="gender"
-                      value="male"
-                      onClick={validate}
-                      variant="secondary"
-                    >
-                      Male
-                    </Button>
-                    <Button
-                      name="gender"
-                      value="other"
-                      onClick={validate}
-                      variant="secondary"
-                    >
-                      Other
-                    </Button>
-                  </ButtonGroup>
-                  <Form.Text className="invalid">
-                    <br />
-                    {form.gender.errors.map((error) => (
-                      <h6 key={counter()}>{error}</h6>
-                    ))}
-                  </Form.Text>
-                </div>
-              </div>
-            </Form.Group>
-          </Form.Group> */}
-          <Button onClick={submitted} variant="primary">
-            Submit
+          <Button onClick={submitted} variant={edit ? "warning" : "success"}>
+            {edit ? "Edit" : "Add"}
           </Button>
         </Form>
       </div>

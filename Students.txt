@@ -1,0 +1,28 @@
+Edit Student Details ex:
+1- Build a page which lists 3 existing student names.
+2- When a name is clicked, show the student details
+	to the right inside a nice card.
+3- Show how many students there are on the top of the list.
+4- Add button for adding new student.
+	When clicked, show the form to the right. When done,
+	add the new student to the list and show the new name.
+5- Inside the student card there is an edit button. 
+	When clicked, show an edit form to the right of the card,
+	filled with student details.
+6- Add a folder named DAL (read about Data Access Layer architecture).
+	Inside, place an api.js file.
+From now on - this api is the only place that handles data!
+The api handles all relevant things like LocalStorage, fetching from remote server,
+structuring the data and so on.
+If you need students, ask the api.
+If you need to add new student, 
+you give the api relevant data and it is the api responsibility to add it to the 'db' data.
+If you need to update student, you give relevant data to the api,
+ and the api is the only one that is responsible for actually updating the data.
+Anything that needs data retrieval or manipulation is done via the api.js!
+Every function in api.js returns promise.
+ Promise of students, promise of result of the update, and so on.
+Simulate that when you ask the api for data,
+ it simulates some delay (Like getting students. 
+It returns the students after 2 seconds).
+7- Planning and Times are much appreciated.

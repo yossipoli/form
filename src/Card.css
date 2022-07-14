@@ -1,0 +1,14 @@
+.pic{
+    margin-top: 5%;
+    margin-left: 5%;
+    width: 250px;
+    height: 250px;
+}
+
+
+.card{
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 10%;
+    box-shadow: 16px 6px 15px rgb(216, 125, 140);
+}

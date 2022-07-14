@@ -1,8 +1,66 @@
-.App {
+.App{
+  margin: 10px;
+  justify-content: center;
   text-align: center;
 }
 
+.mainTitle{
+  font-family: "Work Sans", sans-serif;
+  font-weight: 800;
+  font-size: 5em;
+  width: 5em;
+  line-height: 0.9em;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+
+.rainbow-text{
+  background: #CA4246;
+  background-color: #CA4246;
+  background: conic-gradient(
+    #CA4246 16.666%, 
+    #E16541 16.666%, 
+    #E16541 33.333%, 
+    #F18F43 33.333%, 
+    #F18F43 50%, 
+    #8B9862 50%, 
+    #8B9862 66.666%, 
+    #476098 66.666%, 
+    #476098 83.333%, 
+    #A7489B 83.333%);
+    background-size: 57%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  animation: rainbow-text-animation-rev 0.5s ease forwards
+}
+
+.row {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.col{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  width: 45vw;  
+  max-width: 500px;
+  margin: 0 10px;
+}
+
+#leftCol{
+  background: linear-gradient(to left bottom, rgb(193, 245, 204), rgb(117, 177, 99));
+
+}
+
+h1{
+  color: green;
+}
 
 /* .App-logo {
   height: 40vmin;

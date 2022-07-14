@@ -1,0 +1,24 @@
+.listPage{
+    padding: 20px;
+}
+.list{
+    display: flex;
+    justify-content: center;
+}
+
+td{
+    border: 1px solid green;
+}
+
+td:hover{
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+table{
+    font-size: larger;
+    font-weight: bolder;
+}
+
