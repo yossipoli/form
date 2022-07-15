@@ -1,7 +1,7 @@
 import Form from 'react-bootstrap/Form';
-// let key = 100
+
 function Text(props) {
-    // console.log(props)
+
   return (
     <>
       <Form.Label>{props.label}</Form.Label>

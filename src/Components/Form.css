@@ -5,6 +5,7 @@
 }
 
 .col{
+    text-align: left;
     display: block;
 }
 
@@ -14,4 +15,8 @@
 
 .invalid{
     color: red;
+}
+
+.formHead{
+    text-align: center;
 }

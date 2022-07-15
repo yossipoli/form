@@ -17,15 +17,14 @@ function CardComponent({ edit, id, name, ...props }) {
       style={{ width: "18rem", backgroundColor: colors[id % 6] }}
     >
       <Card.Body>
-        <Card.Title> ID: {id} <br/>{name}</Card.Title>
-        <Card.Text>
-          {Object.keys(props).map((prop, index) => (
-            <label key={index}>
-              <strong>{prop.charAt(0).toUpperCase() + prop.slice(1)}:</strong> {props[prop]}{" "}
-              <br/>
-            </label> 
-          ))}
-        </Card.Text>
+        <Card.Title className="id"> ID: {id} </Card.Title>
+        <Card.Title className="name"> {name}</Card.Title>
+        {Object.keys(props).map((prop, index) => (
+          <Card.Text key={index}>
+              <strong>{prop.charAt(0).toUpperCase() + prop.slice(1)}:</strong>{" "}
+              {props[prop].toString()}{" "}
+          </Card.Text>
+        ))}
         <Button variant="outline-secondary" onClick={edit}>
           {" "}
           Edit{" "}

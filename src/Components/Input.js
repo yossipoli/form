@@ -1,7 +1,7 @@
 import React from 'react'
-import Text from './Components/inputComponents/Text'
-import Select from './Components/inputComponents/Select'
-import CheckBox from './Components/inputComponents/CheckBox'
+import Text from './inputComponents/Text'
+import Select from './inputComponents/Select'
+import CheckBox from './inputComponents/CheckBox'
 
 function Input(props) {
   // console.log(props)
@@ -29,10 +29,3 @@ function Input(props) {
 }
 
 export default Input
-
-// //first, NOT the inside input props 
-// key = {form[input].id} 
-// onBlur = {validate}
-// errors = {form[input].errors}
-// // inside the input props:
-// {...form[input]}
