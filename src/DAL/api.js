@@ -41,6 +41,7 @@ class api {
   setItem(id, newItemData) {
     return new Promise((resolve) => {
       setTimeout(() => {
+        newItemData.id= id
         this._data[id] = newItemData;
         localStorage.setItem("data", JSON.stringify(this._data));
       }, 2000);
@@ -63,8 +64,8 @@ const data = {
     name: "John",
     email: "john@gmail.com",
     address: "My House 29, New York",
-    course: "Java",
-    gender: "male",
+    course: "Java Script",
+    gender: "Male",
     agree: true,
   },
   2: {
@@ -72,8 +73,8 @@ const data = {
     name: "Dan",
     email: "dan@gmail.com",
     address: "Home 14, Tel-Aviv",
-    course: "Python",
-    gender: "male",
+    course: "CSS",
+    gender: "Male",
     agree: true,
   },
   3: {
@@ -81,8 +82,8 @@ const data = {
     name: "Lior",
     email: "lior@gmail.com",
     address: "My House 3, Some City",
-    course: "Tora",
-    gender: "female",
+    course: "HTML",
+    gender: "Female",
     agree: true,
   },
 };

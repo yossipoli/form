@@ -93,7 +93,7 @@ function StudentForm({
       },
       errors: [],
     },
-    married: {
+    agree: {
       id: 6,
       name: "agree",
       label: "Agree",

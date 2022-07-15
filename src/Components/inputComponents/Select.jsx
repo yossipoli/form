@@ -4,10 +4,10 @@ function Select(props) {
   return (
     <>
       <label>{props.label}</label>
-      <Form.Select onChange={props.onBlur}>
-        <option value="">Select {props.label}</option>
+      <Form.Select name={props.name} onChange={props.onBlur} defaultValue={props.value}>
+        <option  value="">Select {props.label}</option>
         {props.options.map((option, index) => (
-          <option key={index} value={option.value}>
+          <option key={index.toString()}>
             {option.title}
           </option>
         ))}
