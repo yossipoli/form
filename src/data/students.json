@@ -1,0 +1,29 @@
+{
+  "1": {
+    "id": 1,
+    "name": "John",
+    "email": "john@gmail.com",
+    "address": "My House 29, New York",
+    "course": "Java Script",
+    "gender": "Male",
+    "agree": true
+  },
+  "2": {
+    "id": 2,
+    "name": "Dan",
+    "email": "dan@gmail.com",
+    "address": "Home 14, Tel-Aviv",
+    "course": "CSS",
+    "gender": "Male",
+    "agree": true
+  },
+  "3": {
+    "id": 3,
+    "name": "Lior",
+    "email": "lior@gmail.com",
+    "address": "My House 3, Some City",
+    "course": "HTML",
+    "gender": "Female",
+    "agree": true
+  }
+}

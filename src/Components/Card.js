@@ -2,19 +2,19 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./Card.css";
 
-const colors = [
-  "lightpink",
-  "orange",
-  "yellow",
-  "lightgreen",
-  "lightblue",
-  "violet",
-];
+// const colors = [
+//   "lightpink",
+//   "orange",
+//   "yellow",
+//   "lightgreen",
+//   "lightblue",
+//   "violet",
+// ];
 function CardComponent({ edit, id, name, ...props }) {
   return (
     <Card
       className="card"
-      style={{ width: "18rem", backgroundColor: colors[id % 6] }}
+      style={{ width: "18rem" }}
     >
       <Card.Body>
         <Card.Title className="id"> ID: {id} </Card.Title>
@@ -25,7 +25,7 @@ function CardComponent({ edit, id, name, ...props }) {
               {props[prop].toString()}{" "}
           </Card.Text>
         ))}
-        <Button variant="outline-secondary" onClick={edit}>
+        <Button variant="outline-warning" onClick={edit}>
           {" "}
           Edit{" "}
         </Button>

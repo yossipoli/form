@@ -10,13 +10,8 @@ function Text(props) {
         name = {props.name}
         placeholder = {props.placeholder}
         defaultValue={props.value}
-        onBlur = {props.onBlur}
+        onBlur = {props.validateInput}
       />
-        <Form.Text className="invalid">
-            {props.errors.map((error, index) => (
-            <h6 key={index}>{error}</h6>
-            ))}
-        </Form.Text>
     </>
   );
 }

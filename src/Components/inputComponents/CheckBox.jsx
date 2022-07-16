@@ -3,11 +3,11 @@ import Form from "react-bootstrap/Form";
 import { useState } from 'react'
 
 function CheckBox(props) {
-  const [value, setValue] = useState(props.value)
+  const [value, setValue] = useState(true)
 
   function handleChanges(){
     setValue(!value)
-    props.onBlur()
+    props.validateInput({target:{name: props.name, value: value}})
   }
   return (
     <div>
@@ -17,13 +17,8 @@ function CheckBox(props) {
         label={props.label}
         name={props.name}
         onChange={handleChanges}
-        defaultValue={value}
+        defaultValue= {false}
       />
-      <Form.Text className="invalid">
-        {props.errors.map((error) => (
-          <h6 key={props.counter}>{error}</h6>
-        ))}
-      </Form.Text>
     </div>
   );
 }

@@ -14,8 +14,11 @@
 }
 
 .card{
+    font-style: italic;
+    color: rgb(250, 253, 34);
     margin: 20px;
-    border: 1px solid black;
+    border: 1px solid white;
     border-radius: 10%;
-    box-shadow: 16px 6px 15px rgb(216, 125, 140);
+    box-shadow: 16px 6px 20px rgb(73, 92, 73);
+    background: linear-gradient(to right bottom , rgb(160, 201, 160) , rgb(49, 78, 49));
 }

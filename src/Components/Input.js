@@ -4,7 +4,6 @@ import Select from './inputComponents/Select'
 import CheckBox from './inputComponents/CheckBox'
 
 function Input(props) {
-  // console.log(props)
   let InputType = Text
   switch(props.type){
     case "select" : {
@@ -23,6 +22,11 @@ function Input(props) {
     <div>
 
         <InputType key={props.id} {...props}/>
+        <div className="invalid">
+            {props.errors.map((error, index) => (
+            <h6 key={index}>{error}</h6>
+            ))}
+        </div>
 
     </div>
   )

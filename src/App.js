@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 import "./App.css";
-import StudentForm from "./Components/Form";
+import RegisterNEdit from "./registerFromData";
 import CardComponent from "./Components/Card";
 import List from "./Components/List";
 import Students from "./DAL/api";
@@ -49,7 +49,7 @@ getData()
 
   return (
     <div className="App">
-      <h1 className="mainTitle rainbow-text">Cool Website</h1>
+      <h1 className="mainTitle rainbow-text">Academic Students</h1>
 
       {load ? (
         <div className="row">
@@ -68,7 +68,7 @@ getData()
 
           <div className="col">
             {showAdd ? (
-              <StudentForm
+              <RegisterNEdit
                 edit={currentStudent.id}
                 renderList={renderList}
                 {...currentStudent}
