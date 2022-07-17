@@ -12,12 +12,12 @@ class api {
   }
 
   set data(newData) {
-    return new Promise((resolve) => {
+
       setTimeout(() => {
         this._data = newData;
         localStorage.setItem("data", JSON.stringify(this._data));
       }, 2000);
-    });
+
   }
 
   getItem(id) {
@@ -29,32 +29,32 @@ class api {
   }
 
   addItem(newItem) {
-    return new Promise((resolve) => {
+
       setTimeout(() => {
         newItem.id = Object.keys(this._data).length + 1;
         this._data[newItem.id] = newItem;
         localStorage.setItem("data", JSON.stringify(this._data));
       }, 2000);
-    });
+
   }
 
   setItem(id, newItemData) {
-    return new Promise((resolve) => {
+
       setTimeout(() => {
         newItemData.id= id
         this._data[id] = newItemData;
         localStorage.setItem("data", JSON.stringify(this._data));
       }, 2000);
-    });
+
   }
 
   removeItem(id) {
-    return new Promise((resolve) => {
+
       setTimeout(() => {
         delete this._data[id];
         localStorage.setItem("data", JSON.stringify(this._data));
       }, 2000);
-    });
+
   }
 }
 

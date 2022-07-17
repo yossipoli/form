@@ -38,9 +38,12 @@ getData()
     setCurrentStudent(list[id]);
   }
 
-  function renderList() {
-    setList({...list})
+  async function renderList() {
+    setLoad(true)
     switchWindow(false, false);
+    const newData = await Students.data
+    setList({...newData})
+    setLoad(false)
   }
 
   function edit() {
